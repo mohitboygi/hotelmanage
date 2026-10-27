@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>TableTap – QR Ordering for Restaurants</title>
+<style>
+:root{--bg:#faf6ee;--cd:#fff;--ink:#23211f;--mu:#6f6a62;--ln:#e8e1d3;--em:#0f7b5f;--ed:#0a5c47;--el:#e3f2ec;--gd:#c9a46a;--rd:#b3392f;--am:#b7791f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171614;--cd:#232120;--ink:#f1ece2;--mu:#a39d91;--ln:#37332d;--em:#35b58f;--ed:#2a9777;--el:#16312a}}
+*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,'Segoe UI',Roboto,sans-serif}
+h1,h2,h3{font-family:Georgia,'Iowan Old Style',serif;font-weight:600;line-height:1.15;margin:0 0 .45em}h1{font-size:clamp(32px,7vw,56px);letter-spacing:-.01em}h2{font-size:clamp(26px,4.5vw,36px)}h3{font-size:19px}
+button,input,textarea{font:inherit;color:inherit}.wrap{max-width:1040px;margin:0 auto;padding:0 20px}.mu{color:var(--mu)}
+.top{position:sticky;top:0;z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln)}.top .wrap{display:flex;align-items:center;gap:10px;padding:12px 20px}.logo{font:700 22px Georgia,serif;margin-right:auto}.logo span{color:var(--em)}
+.btn{background:var(--em);color:#fff;border:0;border-radius:12px;padding:12px 22px;font-weight:600;cursor:pointer;transition:.15s}.btn:hover{background:var(--ed);transform:translateY(-1px)}.btn.o{background:transparent;color:var(--ink);border:1px solid var(--ln)}.btn.o:hover{background:var(--el)}.btn.s{padding:8px 14px;font-size:14px}.btn:disabled{opacity:.6}
+.hero{position:relative;overflow:hidden;background:radial-gradient(700px 360px at 85% 10%,color-mix(in srgb,var(--em) 16%,transparent),transparent),radial-gradient(500px 300px at 0 90%,color-mix(in srgb,var(--gd) 20%,transparent),transparent)}
+.hg{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;padding:64px 0 56px}@media(max-width:800px){.hg{grid-template-columns:1fr;padding:40px 0}}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;padding:4px 12px;border-radius:99px;background:var(--el);color:var(--ed)}
+.hero p.lead{font-size:18px;max-width:520px}.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.phone{width:262px;margin:auto;border:9px solid #23211f;border-radius:34px;background:var(--bg);padding:14px;box-shadow:0 30px 60px -20px #0006;transform:rotate(2.5deg)}
+.pc{height:62px;border-radius:14px;background:linear-gradient(135deg,var(--em),var(--gd));margin-bottom:10px}.pi{display:flex;gap:10px;align-items:center;background:var(--cd);border:1px solid var(--ln);border-radius:12px;padding:8px;margin-bottom:8px;font-size:13px}.pi i{font-style:normal;width:34px;height:34px;border-radius:9px;background:var(--el);display:grid;place-items:center;font-size:18px}.pi b{margin-left:auto}.pb{background:var(--em);color:#fff;border-radius:12px;padding:10px;text-align:center;font-weight:600;font-size:13px;margin-top:6px}
+section{padding:56px 0}.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}.card{background:var(--cd);border:1px solid var(--ln);border-radius:18px;padding:22px}
+.ic{width:46px;height:46px;border-radius:13px;background:var(--el);display:grid;place-items:center;font-size:22px;margin-bottom:12px}.num{font:600 44px Georgia,serif;color:var(--em);line-height:1}
+.band{background:linear-gradient(135deg,#0a5c47,#0f7b5f);color:#fff;border-radius:24px;padding:40px 26px;text-align:center}.band .btn{background:#fff;color:#0a5c47}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 4px}input,textarea{width:100%;padding:11px 13px;border-radius:11px;border:1px solid var(--ln);background:var(--cd)}input:focus,textarea:focus{outline:2px solid var(--em);border-color:transparent}
+.form{max-width:540px;margin:0 auto}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:480px){.two{grid-template-columns:1fr}}
+.tabs{display:flex;border:1px solid var(--ln);border-radius:13px;overflow:hidden;margin-bottom:6px;background:var(--cd)}.tabs button{flex:1;border:0;background:none;padding:11px;cursor:pointer;font-weight:600}.tabs .on{background:var(--em);color:#fff}
+.err{color:var(--rd);font-size:14px;min-height:20px}.okb{background:var(--el);border:1px solid var(--em);border-radius:13px;padding:14px;margin-top:10px}
+.demo{font-size:13px;color:var(--am);border:1px dashed var(--am);border-radius:9px;padding:7px 11px;margin:10px 0}.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.hide{display:none}
+footer{background:#161513;color:#cfc8ba;margin-top:30px;padding:54px 0 26px}footer h4{color:#fff;margin:0 0 12px;font:600 14px -apple-system,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.fg{display:grid;gap:30px;grid-template-columns:1.5fr 1fr 1fr 1.3fr}@media(max-width:800px){.fg{grid-template-columns:1fr 1fr}}@media(max-width:480px){.fg{grid-template-columns:1fr}}
+footer a,footer .lk{display:block;color:#cfc8ba;text-decoration:none;background:none;border:0;padding:4px 0;cursor:pointer;text-align:left;font-size:15px}footer a:hover,footer .lk:hover{color:#fff}footer p{margin:0 0 10px;font-size:14px}
+.fb{border-top:1px solid #2e2b27;margin-top:34px;padding-top:18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:13px;color:#9a9385}
+</style></head><body>
+<header class="top"><div class="wrap"><div class="logo">Table<span>Tap</span></div><button class="btn o s" data-go="about">About</button><button class="btn s" data-go="authv">Get Started</button></div></header>
+
+<div id="home">
+<div class="hero"><div class="wrap hg"><div><span class="tag">QR ORDERING FOR RESTAURANTS &amp; HOTELS</span><h1 style="margin-top:16px">Your menu. Your tables. Your orders, in one place.</h1>
+<p class="mu lead">Guests scan a QR code at their table, browse your menu and order from their phone. You manage every order from one simple dashboard. No app to install.</p>
+<div class="cta"><button class="btn" data-go="authv">Get Started</button><button class="btn o" data-go="how">See how it works</button></div></div>
+<div class="phone" aria-hidden="true"><div class="pc"></div><div style="font:600 15px Georgia,serif;margin-bottom:8px">The Daily Grind · Table 04</div>
+<div class="pi"><i>🍕</i>Margherita Pizza<b>₹249</b></div><div class="pi"><i>☕</i>Cappuccino<b>₹160</b></div><div class="pi"><i>🍔</i>Aloo Tikki Burger<b>₹99</b></div><div class="pb">View cart · ₹508</div></div></div></div>
+
+<div class="wrap">
+<section id="about"><span class="tag">ABOUT</span><h2 style="margin-top:12px">What is TableTap?</h2><p class="mu" style="max-width:700px">TableTap is a digital menu and order management system for restaurants, cafés and hotels. A customer scans the QR code on the table, picks dishes like pizza, burgers or coffee, adds them to the cart and places the order. They can pay online or at the reception, and rate your service afterwards.</p></section>
+<section id="features" style="padding-top:0"><h2>Everything you need to run orders</h2><div class="grid">
+<div class="card"><div class="ic">📱</div><h3>QR digital menu</h3><p class="mu">Categories, search and prices, in a clean mobile-first menu.</p></div>
+<div class="card"><div class="ic">🧾</div><h3>Live orders</h3><p class="mu">New orders arrive in your dashboard. Accept, reject or update the status.</p></div>
+<div class="card"><div class="ic">✅</div><h3>Item availability</h3><p class="mu">Switch an item off when it runs out and guests see it as sold out.</p></div>
+<div class="card"><div class="ic">📊</div><h3>Sales insights</h3><p class="mu">See your best and slowest sellers, item by item.</p></div></div></section>
+<section id="how" style="padding-top:0"><h2>Get started in three steps</h2><div class="grid">
+<div class="card"><div class="num">1</div><h3 style="margin-top:10px">Sign up</h3><p class="mu">Tell us about your hotel or restaurant.</p></div>
+<div class="card"><div class="num">2</div><h3 style="margin-top:10px">Get your password</h3><p class="mu">We review your details, set your password and contact you.</p></div>
+<div class="card"><div class="num">3</div><h3 style="margin-top:10px">Log in</h3><p class="mu">Build your menu and generate QR codes for your tables.</p></div></div></section>
+<section style="padding-top:0"><div class="band"><h2>Ready to take orders from every table?</h2><p style="opacity:.85;margin:0 0 18px">Create your account request in under two minutes.</p><button class="btn" data-go="authv">Get Started</button></div></section>
+</div></div>
+
+<div id="authv" class="hide"><div class="wrap"><section><div class="form"><button class="btn o s" data-go="home">‹ Back</button><h2 style="margin-top:16px">Get Started</h2>
+<div class="tabs"><button id="tl" class="on">Log in</button><button id="ts">Sign up</button></div>
+<form id="lf" novalidate><label>Email or mobile number</label><input name="id" autocomplete="username"><label>Password</label><input name="password" type="password" autocomplete="current-password"><p class="err" id="le"></p><button class="btn" style="width:100%">Log in</button><p class="mu" style="font-size:14px">New here? Choose “Sign up”. Your password is set by our team after we review your details.</p></form>
+<form id="sf" class="hide" novalidate><label>Hotel / restaurant name</label><input name="hotel_name"><div class="two"><div><label>Owner name</label><input name="owner_name"></div><div><label>Mobile number</label><input name="phone" inputmode="numeric"></div></div><label>Email</label><input name="email" type="email"><label>Hotel address</label><textarea name="address" rows="2"></textarea><div class="two"><div><label>PIN code</label><input name="pincode" inputmode="numeric" maxlength="6"></div><div><label>City</label><input name="city"></div></div><label>State</label><input name="state" placeholder="e.g. Gujarat">
+<p class="err" id="se"></p><button class="btn" style="width:100%">Submit sign-up request</button><div id="sok"></div></form></div></section></div></div>
+
+<div id="acct" class="hide"><div class="wrap"><section class="form"><div class="card"><span class="tag">LOGGED IN</span><h2 style="margin-top:12px" id="ah"></h2><p class="mu" id="ao"></p>
+<div class="demo">The owner dashboard is not connected to this login yet. That is the next step.</div><button class="btn o" id="lo">Log out</button></div></section></div></div>
+
+<div id="adm" class="hide"><div class="wrap"><section><h2>Admin: account requests</h2>
+<form id="af" class="form" style="margin:0 0 16px" novalidate><label>Admin password</label><input name="password" type="password"><p class="err" id="ae"></p><button class="btn">Admin log in</button></form><div id="al"></div></section></div></div>
+
+<footer><div class="wrap"><div class="fg">
+<div><div class="logo" style="color:#fff;font-size:24px;margin-bottom:10px">Table<span>Tap</span></div><p>QR ordering and order management for restaurants, cafés and hotels.</p><p>Designed and built by Mohit in Ahmedabad, Gujarat, India.</p></div>
+<div><h4>Product</h4><button class="lk" data-go="features">Features</button><button class="lk" data-go="how">How it works</button><button class="lk" data-go="authv">Get Started</button></div>
+<div><h4>Support</h4><a href="mailto:mohityadavoffical1@gmail.com">mohityadavoffical1@gmail.com</a><a href="https://instagram.com/mohityadavoffical" target="_blank" rel="noopener">Instagram @mohityadavoffical</a></div>
+<div><h4>About the builder</h4><p>TableTap is built by Mohit Corporation to help local businesses take orders the modern way. Questions, feedback or a custom request? Message us on Instagram or email us.</p></div></div>
+<div class="fb"><span>© 2026 Mohit Corporation. All rights reserved.</span><span>Made with care in Ahmedabad, India</span></div></div></footer>
+<script>
+const API_URL='https://hotelmanagementbackend-ps5b.onrender.com',API=API_URL||(location.hostname.endsWith('github.io')?null:''),FORM_KEY='' /* optional: Web3Forms access key for backend-free signup email */,$=s=>document.querySelector(s),E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),ADMIN='mohityadavoffical1@gmail.com';
+let adminTok='';const V=['home','authv','acct','adm'],SC=['about','features','how'];
+const show=v=>{V.forEach(x=>$('#'+x).classList.toggle('hide',x!=v));scrollTo(0,0)};
+async function api(p,b,t,m){if(API===null)return{net:1};try{const r=await fetch(API+p,{method:m||(b?'POST':'GET'),headers:{'Content-Type':'application/json',...(t?{Authorization:'Bearer '+t}:{})},body:b?JSON.stringify(b):undefined});const d=await r.json().catch(()=>({}));return{ok:r.ok,s:r.status,d}}catch(e){return{net:1}}}
+const NETMSG='Could not reach the server.';
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(!g)return;const k=g.dataset.go;if(SC.includes(k)){show('home');setTimeout(()=>$('#'+k).scrollIntoView({behavior:'smooth'}),30)}else show(k)});
+const tab=l=>{$('#lf').classList.toggle('hide',!l);$('#sf').classList.toggle('hide',l);$('#tl').classList.toggle('on',l);$('#ts').classList.toggle('on',!l)};
+$('#tl').onclick=()=>tab(1);$('#ts').onclick=()=>tab(0);
+$('#lf').onsubmit=async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));$('#le').textContent='';
+ if(!d.id.trim()||!d.password){$('#le').textContent='Please enter your email or mobile number and password.';return}
+ const r=await api('/api/account/login',d);
+ if(r.net){$('#le').textContent=NETMSG+' Please try again later.';return}
+ if(!r.ok){$('#le').textContent=r.d.error||('Login failed (server replied '+r.s+')');return}
+ try{sessionStorage.setItem('tt_tok',r.d.token)}catch(x){}
+ $('#ah').textContent=r.d.hotel_name;$('#ao').textContent='Welcome, '+r.d.owner_name;show('acct')};
+$('#lo').onclick=()=>{try{sessionStorage.removeItem('tt_tok')}catch(x){}show('home')};
+$('#sf').onsubmit=async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));for(const k in d)d[k]=d[k].trim();$('#se').textContent='';$('#sok').innerHTML='';
+ const m=!d.hotel_name||!d.owner_name||!d.address||!d.city||!d.state?'Please fill in all the details.':!/^[6-9]\d{9}$/.test(d.phone)?'Enter a valid 10-digit mobile number.':!/^\S+@\S+\.\S+$/.test(d.email)?'Enter a valid email address.':!/^\d{6}$/.test(d.pincode)?'PIN code must be 6 digits.':'';
+ if(m){$('#se').textContent=m;return}
+ const b=e.target.querySelector('button');b.disabled=true;const r=API===null?{net:1}:await api('/api/signup',d);if(r.net&&FORM_KEY){const w=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:FORM_KEY,subject:'New TableTap signup: '+d.hotel_name,...d})}).then(x=>x.json()).catch(()=>null);if(w&&w.success){r.net=0;r.ok=true;r.d={}}}b.disabled=false;
+ if(r.net){const body=Object.entries(d).map(([k,v])=>k+': '+v).join('\n');
+  $('#sok').innerHTML=`<div class="okb"><b>${NETMSG}</b><p class="mu">You can send your details by email instead.</p><a class="btn" style="display:inline-block;text-decoration:none" href="mailto:${ADMIN}?subject=${encodeURIComponent('New TableTap signup: '+d.hotel_name)}&body=${encodeURIComponent(body)}">Send by email</a></div>`;return}
+ if(!r.ok){$('#se').textContent=r.d.error||('Request failed (server replied '+r.s+')');return}
+ e.target.reset();$('#sok').innerHTML='<div class="okb"><b>Request received ✓</b><p class="mu">We will review your details, set your password and get in touch. After that you can log in.</p></div>'};
+async function loadAcc(){const r=await api('/api/admin/accounts',0,adminTok);if(!r.ok){$('#al').textContent=r.d.error||NETMSG;return}
+ $('#al').innerHTML=r.d.map(a=>`<div class="card" style="margin-bottom:10px"><div class="row"><b>${E(a.hotel_name)}</b><span class="tag">${E(a.status)}</span></div><div class="mu" style="font-size:14px">${E(a.owner_name)} · ${E(a.phone)} · ${E(a.email)}<br>${E(a.address)}, ${E(a.city)}, ${E(a.state)} ${E(a.pincode)}</div>
+ <div class="row" style="margin-top:10px"><input id="pw${a.id}" placeholder="New password (min 8 characters)" style="flex:1;min-width:150px"><button class="btn o s" data-g="${a.id}">Generate</button><button class="btn s" data-s="${a.id}">Set &amp; activate</button>${a.status=='active'?`<button class="btn o s" data-x="${a.id}">Disable</button>`:''}</div><div class="err" id="m${a.id}"></div></div>`).join('')||'<p class="mu">No accounts yet.</p>'}
+$('#af').onsubmit=async e=>{e.preventDefault();$('#ae').textContent='';const r=await api('/api/admin/login',{password:e.target.password.value});
+ if(r.net){$('#ae').textContent=NETMSG;return}if(!r.ok){$('#ae').textContent=r.d.error||('Admin login failed (server replied '+r.s+')');return}adminTok=r.d.token;e.target.classList.add('hide');loadAcc()};
+$('#al').onclick=async e=>{const b=e.target.closest('button');if(!b)return;const g=b.dataset.g,s=b.dataset.s,x=b.dataset.x;
+ if(g){$('#pw'+g).value=Array.from(crypto.getRandomValues(new Uint8Array(10)),n=>'abcdefghjkmnpqrstuvwxyz23456789'[n%31]).join('')}
+ if(s){const p=$('#pw'+s).value;const r=await api('/api/admin/accounts/'+s+'/password',{password:p},adminTok);
+  if(!r.ok){$('#m'+s).textContent=r.d.error||'Failed';return}await loadAcc();alert('Password set. Share it with the user: '+p)}
+ if(x){if(confirm('Disable this account?')){await api('/api/admin/accounts/'+x+'/disable',{},adminTok);loadAcc()}}};
+const route=()=>show(location.hash=='#admin'?'adm':'home');addEventListener('hashchange',route);route();
+</script></body></html>
